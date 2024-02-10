@@ -1,0 +1,14 @@
+<component>
+  <description>
+	Provides common methods used across the risk deviation solution
+  </description>
+
+  <version>1.0</version>
+  <removable>True</removable>
+  <priority>1</priority>
+
+  <extension type="include">
+    <filename>helper.py</filename>
+  </extension>
+
+</component>

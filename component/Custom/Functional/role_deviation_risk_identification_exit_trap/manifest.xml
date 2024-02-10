@@ -1,0 +1,16 @@
+<component>
+    <description>
+        exit trap component providing detection of risk from role deviations.
+    </description>
+    <version>1.0</version>
+    <priority>50</priority>
+    <removable>True</removable>
+
+    <depends>Functional.role_deviation_risk_analysis</depends>
+
+    <extension type="script">
+        <filename>exit.py</filename>
+        <priority>50</priority>
+        <provides>WF_REQUEST_COMPLETED</provides>
+    </extension>
+</component>

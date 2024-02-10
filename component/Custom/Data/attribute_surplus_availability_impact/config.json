@@ -1,0 +1,167 @@
+{
+  "Dependents": [
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "0",
+        "viewvalue": "N/A"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "1",
+        "viewvalue": "\u00a30-1,000 (Lowest Risk)"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "10",
+        "viewvalue": "\u00a3250,000+ (Highest Risk)"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "2",
+        "viewvalue": "\u00a31,000-5,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "3",
+        "viewvalue": "\u00a35,000-10,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "4",
+        "viewvalue": "\u00a310,000-25,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "5",
+        "viewvalue": "\u00a325,000-\u00a350,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "6",
+        "viewvalue": "\u00a350,000-75,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "7",
+        "viewvalue": "\u00a375,000-100,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "8",
+        "viewvalue": "\u00a3100,000-150,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "9",
+        "viewvalue": "\u00a3150,000-250,000"
+      },
+      "Type": "AttributeRestrictedValue"
+    }
+  ],
+  "Fields": {
+    "advsearchable": true,
+    "allowcopy": false,
+    "attrkey": "SURPLUS_AVAILABILITY_IMPACT",
+    "attrtype": "E",
+    "authattribute": false,
+    "datatype": "N",
+    "dispformat": "",
+    "displayattr": "",
+    "dupallowed": false,
+    "encrypted": false,
+    "enforcecreate": true,
+    "enforceinherit": true,
+    "enforceother": true,
+    "enforceupdate": true,
+    "falsevalue": "!!!__FALSE__",
+    "fmthelp": "",
+    "fmtvalid": "",
+    "format": "",
+    "hasdefaults": false,
+    "hasrestricted": true,
+    "invalidateauth": true,
+    "keepcase": false,
+    "length": 50,
+    "maxallowed": 1,
+    "minrequire": 0,
+    "name": "What is the potential impact on availability if an unauthorized user holds this?",
+    "nonevalue": "!!!__NOVALUESPECIFIED__",
+    "notes": "",
+    "onreport": true,
+    "order": "",
+    "parentattr": "",
+    "regexp": "",
+    "sendable": false,
+    "submitonly": false,
+    "track": false,
+    "truevalue": "!!!__TRUE__",
+    "valplugin": "",
+    "vcardprop": "",
+    "verify": false
+  },
+  "Type": "Attribute"
+}

@@ -1,0 +1,7 @@
+Deviation,Classification,MinimumScore,MaximumScore,Treatment
+Deficit,Low,0,20,No Action
+Deficit,Medium,20,50,Inform
+Deficit,High,50,,Action
+Surplus,Low,0,20,No Action
+Surplus,Medium,20,50,Inform
+Surplus,High,50,,Action

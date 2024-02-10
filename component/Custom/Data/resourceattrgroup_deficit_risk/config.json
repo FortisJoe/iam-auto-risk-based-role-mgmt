@@ -1,0 +1,149 @@
+{
+  "Dependents": [
+    {
+      "Prerequisites": [
+        {
+          "Reference": {
+            "id": "DEFICIT_CONFIDENTIALITY_IMPACT"
+          },
+          "Type": "ResourceAttr"
+        }
+      ],
+      "Fields": {
+        "attrdesc": "What is the potential impact on confidentiality if an authorized user does not hold this?",
+        "attrkey": "DEFICIT_CONFIDENTIALITY_IMPACT",
+        "disporder": 10,
+        "grpid": "DEFICIT_RISK"
+      },
+      "Type": "ResourceAttrGroupMember"
+    },
+    {
+      "Prerequisites": [
+        {
+          "Reference": {
+            "id": "DEFICIT_INTEGRITY_IMPACT"
+          },
+          "Type": "ResourceAttr"
+        }
+      ],
+      "Fields": {
+        "attrdesc": "What is the potential impact on integrity if an authorized user does not hold this?",
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "disporder": 20,
+        "grpid": "DEFICIT_RISK"
+      },
+      "Type": "ResourceAttrGroupMember"
+    },
+    {
+      "Prerequisites": [
+        {
+          "Reference": {
+            "id": "DEFICIT_AVAILABILITY_IMPACT"
+          },
+          "Type": "ResourceAttr"
+        }
+      ],
+      "Fields": {
+        "attrdesc": "What is the potential impact on availability if an authorized user does not hold this?",
+        "attrkey": "DEFICIT_AVAILABILITY_IMPACT",
+        "disporder": 30,
+        "grpid": "DEFICIT_RISK"
+      },
+      "Type": "ResourceAttrGroupMember"
+    },
+    {
+      "Prerequisites": [
+        {
+          "Reference": {
+            "id": "DEFICIT_ANNUAL_RISK_OF_OCCURRENCE"
+          },
+          "Type": "ResourceAttr"
+        }
+      ],
+      "Fields": {
+        "attrdesc": "What is the estimated annual risk of occurrence?",
+        "attrkey": "DEFICIT_ANNUAL_RISK_OF_OCCURRENCE",
+        "disporder": 40,
+        "grpid": "DEFICIT_RISK"
+      },
+      "Type": "ResourceAttrGroupMember"
+    },
+    {
+      "Prerequisites": [
+        {
+          "Reference": {
+            "id": "ALLUSERS",
+            "resgroupid": "2415CC9A-B716-4C84-BE82-A50835B40A7A"
+          },
+          "Type": "ResourceAttrGroupUCPoint"
+        }
+      ],
+      "Fields": {
+        "execute": false,
+        "read": true,
+        "resgroupid": "2415CC9A-B716-4C84-BE82-A50835B40A7A",
+        "subject": "DEFICIT_RISK",
+        "write": true
+      },
+      "Type": "ACL"
+    },
+    {
+      "Prerequisites": [
+        {
+          "Reference": {
+            "id": "GROUP_CREATE_USERS",
+            "resgroupid": "2E8ED85B-489F-47D9-B376-3C4C4643444B"
+          },
+          "Type": "ResourceAttrGroupUCPoint"
+        }
+      ],
+      "Fields": {
+        "execute": false,
+        "read": false,
+        "resgroupid": "2E8ED85B-489F-47D9-B376-3C4C4643444B",
+        "subject": "DEFICIT_RISK",
+        "write": false
+      },
+      "Type": "ACL"
+    },
+    {
+      "Prerequisites": [
+        {
+          "Reference": {
+            "id": "ENTITLEMENT_EXPIRY_CONFIG",
+            "resgroupid": "B3BA1F93-3667-429D-B6EA-7B21B4698792"
+          },
+          "Type": "ResourceAttrGroupUCPoint"
+        }
+      ],
+      "Fields": {
+        "execute": false,
+        "read": false,
+        "resgroupid": "B3BA1F93-3667-429D-B6EA-7B21B4698792",
+        "subject": "DEFICIT_RISK",
+        "write": false
+      },
+      "Type": "ACL"
+    }
+  ],
+  "Fields": {
+    "desc": "Risk Values if this is not held in deficit",
+    "disp": "M",
+    "disporder": 9999,
+    "entm": false,
+    "grpam": false,
+    "grpcm": false,
+    "grpgm": false,
+    "grpid": "DEFICIT_RISK",
+    "iprl": false,
+    "macc": false,
+    "mgrp": true,
+    "msys": false,
+    "rmbr": false,
+    "role": false,
+    "sodr": false,
+    "targ": false,
+    "tmpl": true
+  },
+  "Type": "ResourceAttrGroup"
+}

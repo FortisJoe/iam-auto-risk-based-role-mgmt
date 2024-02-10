@@ -1,0 +1,167 @@
+{
+  "Dependents": [
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "0",
+        "viewvalue": "N/A"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "1",
+        "viewvalue": "1 (Lowest Risk)"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "10",
+        "viewvalue": "10 (Highest Risk)"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "2",
+        "viewvalue": "2"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "3",
+        "viewvalue": "3"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "4",
+        "viewvalue": "4"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "5",
+        "viewvalue": "5"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "6",
+        "viewvalue": "6"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "7",
+        "viewvalue": "7"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "8",
+        "viewvalue": "8"
+      },
+      "Type": "AttributeRestrictedValue"
+    },
+    {
+      "Fields": {
+        "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+        "parentattr": "",
+        "parentseqno": 0,
+        "parentvalue": "",
+        "value": "9",
+        "viewvalue": "9"
+      },
+      "Type": "AttributeRestrictedValue"
+    }
+  ],
+  "Fields": {
+    "advsearchable": true,
+    "allowcopy": false,
+    "attrkey": "DEFICIT_INTEGRITY_IMPACT",
+    "attrtype": "E",
+    "authattribute": false,
+    "datatype": "N",
+    "dispformat": "",
+    "displayattr": "",
+    "dupallowed": false,
+    "encrypted": false,
+    "enforcecreate": true,
+    "enforceinherit": true,
+    "enforceother": true,
+    "enforceupdate": true,
+    "falsevalue": "!!!__FALSE__",
+    "fmthelp": "",
+    "fmtvalid": "",
+    "format": "",
+    "hasdefaults": false,
+    "hasrestricted": true,
+    "invalidateauth": true,
+    "keepcase": false,
+    "length": 50,
+    "maxallowed": 1,
+    "minrequire": 0,
+    "name": "What is the potential impact on integrity if an authorized user does not hold this?",
+    "nonevalue": "!!!__NOVALUESPECIFIED__",
+    "notes": "",
+    "onreport": true,
+    "order": "",
+    "parentattr": "",
+    "regexp": "",
+    "sendable": false,
+    "submitonly": false,
+    "track": false,
+    "truevalue": "!!!__TRUE__",
+    "valplugin": "",
+    "vcardprop": "",
+    "verify": false
+  },
+  "Type": "Attribute"
+}
