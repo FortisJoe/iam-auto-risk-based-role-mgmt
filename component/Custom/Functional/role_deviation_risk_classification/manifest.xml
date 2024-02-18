@@ -19,7 +19,4 @@
     <filename>model.py</filename>
   </extension>
 
-  <configdata component="Functional.role_deviation_risk_classification_evaluation_treatment.model.RiskClassficiationEvalTreatmentLookup">
-  	<filename>data\data.csv</filename>
-  </configdata>
 </component>

@@ -1,11 +1,17 @@
 from enum import Enum
 
-from idmlib.idmobject import Profile, ResourceRole
+from Functional.role_deviation_risk_eval_treatment.evaluation import RiskEvaluation
 
 
 class DeviationType(Enum):
     SURPLUS = 1
     DEFICIT = 2
+
+    def __str__(self):
+        if self.value == self.SURPLUS:
+            return "Surplus"
+        else:
+            return "Deficit"
 
 
 class RiskInformation:
@@ -54,10 +60,13 @@ class RiskAnalysisInput:
 
 class RoleDeviationRiskAnalysis:
     _instance = None
+    _evaluation = None
 
     def __new__(cls):
-        # TODO - create and store risk eval & treatment
-        pass
+        if cls._instance is None:
+            cls._instance = super(RoleDeviationRiskAnalysis, cls).__new__(cls)
+            cls._instance._evaluation = RiskEvaluation()
+        return cls._instance
 
     def analyse(self, risk_input):
         """
@@ -70,5 +79,7 @@ class RoleDeviationRiskAnalysis:
                 info.confidentiality_impact +
                 info.integrity_impact
         )
-        #todo - pass risk score to risk eval & treatment
-        pass
+        self._evaluation.evaluate(
+            risk_input,
+            risk_score
+        )

@@ -1,0 +1,10 @@
+namespace,setting,value,description
+RDRM,NO_ACTION_EMAIL_MAKO,"component\Custom\Scenario\role_deviation_risk\management\data\no_action_email.mako","The email mako template file containing the information sent when no treatment action is applied"
+RDRM,NOTIFY_EMAIL_MAKO,"component\Custom\Scenario\role_deviation_risk\management\data\notify_email.mako","The email mako template file containing the information sent when the notify treatment action is applied"
+RDRM,ACTION_EMAIL_MAKO,"component\Custom\Scenario\role_deviation_risk\management\data\action_email.mako","The email mako template file containing the information sent when the action treatment action is applied"
+RDRM,NO_ACTION_EMAIL,"user1@riskco.local","The email address to contact when no treatment option applied"
+RDRM,NO_ACTION_EMAIL,"user2@riskco.local","The email address to contact when no treatment option applied"
+RDRM,NOTIFY_EMAIL,"user3@riskco.local","The email address to contact when the notify treatment option is applied"
+RDRM,NOTIFY_EMAIL,"user4@riskco.local","The email address to contact when the notify treatment option is applied"
+RDRM,ACTION_EMAIL,"user5@riskco.local","The email address to contact when the action treatment option is applied"
+RDRM,ACTION_EMAIL,"user6@riskco.local","The email address to contact when the action treatment option is applied"
