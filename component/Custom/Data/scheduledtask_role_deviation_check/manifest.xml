@@ -1,0 +1,14 @@
+<component>
+    <description>
+        Provides configuration for:
+			- scheduledtask_role_deviation_check
+    </description>
+    <priority>50</priority>
+    <version>1.0</version>
+    <uninstall>False</uninstall>
+    <removable>False</removable>
+
+    <configdata component="Functional.hid_configuration.json_loader.ConfigHook">
+        <filename>config.json</filename>
+    </configdata>
+</component>

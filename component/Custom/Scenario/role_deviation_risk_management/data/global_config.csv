@@ -8,3 +8,4 @@ RDRM,NOTIFY_EMAIL,"user3@riskco.local","The email address to contact when the no
 RDRM,NOTIFY_EMAIL,"user4@riskco.local","The email address to contact when the notify treatment option is applied"
 RDRM,ACTION_EMAIL,"user5@riskco.local","The email address to contact when the action treatment option is applied"
 RDRM,ACTION_EMAIL,"user6@riskco.local","The email address to contact when the action treatment option is applied"
+RDRM,PDR,RESOLVE_ROLE_DEVIATIONS,"The PDR to use to resolve deviations"

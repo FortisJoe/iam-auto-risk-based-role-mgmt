@@ -1,0 +1,12 @@
+# KVGROUP-V1.0
+"language" "EN_US" = {
+  "WIZARD_WIDGET_DESC_ENFORCEMENT" "" = {
+    "text" = "Resolve enforcement violations"
+  }
+  "WIZARD_WIDGET_DESC_PASSWORD" "" = {
+    "text" = "Set initial password"
+  }
+  "WIZARD_WIDGET_DESC_SOD" "" = {
+    "text" = "Resolve violations"
+  }
+}

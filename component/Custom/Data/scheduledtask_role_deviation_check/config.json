@@ -1,0 +1,30 @@
+{
+  "Fields": {
+    "certid": null,
+    "daysofmonth": 0,
+    "dir": "_INSTALLDIR\\component\\Custom",
+    "dow": 0,
+    "emailaddress": null,
+    "enabled": true,
+    "enablerunall": true,
+    "enddate": null,
+    "frequency": 0,
+    "id": "ROLE_DEVIATION_CHECK",
+    "iterations": 0,
+    "job": "\"C:\\Program Files\\Python311\\python.exe\" -m \"Functional\\role_deviation_risk_identification_schedtask\\process.py\"",
+    "jobownername": "superuser",
+    "lastdayofmonth": false,
+    "mode": "QUARTERLY",
+    "monthsofyear": 0,
+    "periodbydate": true,
+    "perioddayofweek": 3,
+    "periodmonthofyear": 1,
+    "periodstartdate": null,
+    "periodweekofmonth": 0,
+    "relativedays": 0,
+    "startdate": null,
+    "time": "01:00",
+    "timerange": "INDEFINITE"
+  },
+  "Type": "ScheduledTask"
+}

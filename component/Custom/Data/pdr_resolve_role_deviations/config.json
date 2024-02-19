@@ -1,0 +1,111 @@
+{
+  "Dependents": [
+    {
+      "Dependents": [
+        {
+          "Dependents": [
+            {
+              "Fields": {
+                "phase": 1,
+                "ucactor": "USERID",
+                "ucmapid": "390f9e20-43ac-4203-8d2c-0b49ead5",
+                "ucpactor": "REQUESTER"
+              },
+              "Type": "UserclassParticipantMap"
+            }
+          ],
+          "Prerequisites": [
+            {
+              "Reference": {
+                "id": "_EXPLICIT_API_USERS_"
+              },
+              "Type": "Userclass"
+            }
+          ],
+          "Fields": {
+            "resgroupid": "4B611400-CBDD-4065-A424-489A61250D2F",
+            "ucmapid": "390f9e20-43ac-4203-8d2c-0b49ead5",
+            "userclassid": "_EXPLICIT_API_USERS_"
+          },
+          "Type": "UserclassMapping"
+        }
+      ],
+      "Fields": {
+        "criteriap": "U",
+        "desc": "",
+        "preqid": "RESOLVE_ROLE_DEVIATIONS",
+        "resgroupid": "4B611400-CBDD-4065-A424-489A61250D2F"
+      },
+      "Type": "PDRUCPoint"
+    },
+    {
+      "Fields": {
+        "childtype": "",
+        "desc": "!!!WIZARD_WIDGET_DESC_ENFORCEMENT",
+        "display": "A",
+        "displayorder": 999980,
+        "filter": "",
+        "id": "",
+        "preqid": "RESOLVE_ROLE_DEVIATIONS",
+        "reltype": "",
+        "type": "ENFORCEMENT"
+      },
+      "Type": "PDRWizard"
+    },
+    {
+      "Fields": {
+        "childtype": "",
+        "desc": "!!!WIZARD_WIDGET_DESC_SOD",
+        "display": "A",
+        "displayorder": 999988,
+        "filter": "",
+        "id": "",
+        "preqid": "RESOLVE_ROLE_DEVIATIONS",
+        "reltype": "",
+        "type": "SOD"
+      },
+      "Type": "PDRWizard"
+    },
+    {
+      "Fields": {
+        "childtype": "",
+        "desc": "!!!WIZARD_WIDGET_DESC_PASSWORD",
+        "display": "A",
+        "displayorder": 999989,
+        "filter": "",
+        "id": "",
+        "preqid": "RESOLVE_ROLE_DEVIATIONS",
+        "reltype": "",
+        "type": "PASSWORD"
+      },
+      "Type": "PDRWizard"
+    }
+  ],
+  "Fields": {
+    "account_remediation": false,
+    "accountgroup_remediation": false,
+    "add_profile_remediation": false,
+    "allowowner": false,
+    "authsingleresource": false,
+    "cert": false,
+    "childgroup_remediation": false,
+    "deprecated": "",
+    "deprecatedreason": "",
+    "desc": "Resolving Access Deviations from Users Role Definitons",
+    "enabled": true,
+    "helpmsg": "",
+    "preqid": "RESOLVE_ROLE_DEVIATIONS",
+    "profile_attribute_remediation": false,
+    "profile_remediation": false,
+    "report": false,
+    "request": true,
+    "role_remediation": false,
+    "sod_resolution": false,
+    "topicmulti": false,
+    "topicone": false,
+    "transfer_user_remediation": false,
+    "type": "E",
+    "url": ""
+  },
+  "Type": "PDR"
+}

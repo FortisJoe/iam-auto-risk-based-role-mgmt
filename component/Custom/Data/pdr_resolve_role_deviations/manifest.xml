@@ -1,0 +1,20 @@
+<component>
+    <description>
+        Provides configuration for:
+			- PDR = resolve_role_deviations
+    </description>
+    <priority>50</priority>
+    <version>1.0</version>
+    <uninstall>False</uninstall>
+    <removable>False</removable>
+
+    <depends>Data.userclass__explicit_api_users_</depends>
+    
+    <configdata component="Functional.hid_configuration.json_loader.ConfigHook">
+        <filename>config.json</filename>
+    </configdata>
+    
+    <configdata component="Functional.hid_user_interface.gui_config.Loader">
+        <filename>ui/en-us-errmsg.kvg</filename>
+    </configdata>
+</component>

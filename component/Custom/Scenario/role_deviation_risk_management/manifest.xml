@@ -6,6 +6,9 @@
     <priority>50</priority>
     <removable>True</removable>
 
+    <depends>Data.scheduledtask_role_deviation_check</depends>
+    <depends>Data.pdr_resolve_role_deviations</depends>
+
     <depends>Functional.role_deviation_risk_analysis</depends>
 
     <configdata component="Functional.role_deviation_risk_classification_evaluation_treatment.model.RiskClassficiationEvalTreatmentLookup">
