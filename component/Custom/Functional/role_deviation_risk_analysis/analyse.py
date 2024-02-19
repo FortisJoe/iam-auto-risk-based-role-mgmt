@@ -59,14 +59,9 @@ class RiskAnalysisInput:
 
 
 class RoleDeviationRiskAnalysis:
-    _instance = None
-    _evaluation = None
 
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super(RoleDeviationRiskAnalysis, cls).__new__(cls)
-            cls._instance._evaluation = RiskEvaluation()
-        return cls._instance
+    def __init__(self):
+        self._evaluation = RiskEvaluation()
 
     def analyse(self, risk_input):
         """

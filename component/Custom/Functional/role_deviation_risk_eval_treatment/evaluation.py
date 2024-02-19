@@ -11,14 +11,9 @@ log = component_log.getChild(__name__)
 
 
 class RiskEvaluation:
-    _instance = None
-    _treatment = None
 
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super(RiskEvaluation, cls).__new__(cls)
-            cls._instance._treatment = RiskTreatment()
-        return cls._instance
+    def __init__(self):
+        self._treatment = RiskTreatment()
 
     def evaluate(self, risk_input, risk_score):
         treatment = RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level(

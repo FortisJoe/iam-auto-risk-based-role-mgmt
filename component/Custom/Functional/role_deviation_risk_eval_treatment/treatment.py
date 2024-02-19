@@ -11,35 +11,32 @@ log = component_log.getChild(__name__)
 
 
 class RiskTreatment:
-    _instance = None
-    _mako_template_root = core.instance.path_instance
-    _no_action_email_mako = None
-    _no_action_email_addresses = set()
-    _notify_email_mako = None
-    _notify_email_addresses = set()
-    _action_email_mako = None
-    _action_email_addresses = set()
-    _pdr_id = None
 
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super(RiskTreatment, cls).__new__(cls)
-            config_rows = ConfigData("RDRM").get_rows()
-
-            for row in config_rows:
-                if row.setting == "NO_ACTION_EMAIL_MAKO":
-                    cls._no_action_email_mako = row.value
-                elif row.setting == "NO_ACTION_EMAIL":
-                    cls._no_action_email_addresses.add(row.value)
-                elif row.setting == "NOTIFY_EMAIL_MAKO":
-                    cls._notify_email_mako = row.value
-                elif row.setting == "NOTIFY_EMAIL":
-                    cls._notify_email_addresses.add(row.value)
-                elif row.setting == "ACTION_EMAIL_MAKO":
-                    cls._action_email_mako = row.value
-                elif row.setting == "ACTION_EMAIL":
-                    cls._action_email_addresses.add(row.value)
-        return cls._instance
+    def __init__(self):
+        config_rows = ConfigData("RDRM").get_rows()
+        self._mako_template_root = core.instance.path_instance
+        self._no_action_email_mako = None
+        self._no_action_email_addresses = set()
+        self._notify_email_mako = None
+        self._notify_email_addresses = set()
+        self._action_email_mako = None
+        self._action_email_addresses = set()
+        self._pdr_id = None
+        for row in config_rows:
+            if row.setting == "NO_ACTION_EMAIL_MAKO":
+                self._no_action_email_mako = row.value
+            elif row.setting == "NO_ACTION_EMAIL":
+                self._no_action_email_addresses.add(row.value)
+            elif row.setting == "NOTIFY_EMAIL_MAKO":
+                self._notify_email_mako = row.value
+            elif row.setting == "NOTIFY_EMAIL":
+                self._notify_email_addresses.add(row.value)
+            elif row.setting == "ACTION_EMAIL_MAKO":
+                self._action_email_mako = row.value
+            elif row.setting == "ACTION_EMAIL":
+                self._action_email_addresses.add(row.value)
+            elif row.setting == "PDR":
+                self._pdr_id = row.value
 
     def take_no_action(
             self,
