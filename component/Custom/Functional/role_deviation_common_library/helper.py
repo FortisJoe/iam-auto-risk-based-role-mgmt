@@ -14,7 +14,7 @@ log = component_log.getChild(__name__)
 def get_target_accounts_in_roles(profile):
     """ Fetches targets of accounts from users roles
 
-    :param idmlib. profile: The user profile
+    :param idmlib.idmobject.Profile profile: The user profile
     :return: Set of targets of accounts in the profiles roles
     :rtype: set
     """
@@ -26,8 +26,8 @@ def get_target_accounts_in_roles(profile):
                 True,
                 True
         ):
-            if resource.membertype == "TEMPLATE":
-                template_id = resource.memberid
+            if resource["membertype"] == "TEMPLATE":
+                template_id = resource["memberid"]
                 try:
                     for result in core.api.ResourceGet(
                             template_id,
@@ -50,7 +50,7 @@ def get_target_accounts_in_roles(profile):
 def get_groups_in_roles(profile):
     """ Fetches groups from users roles
 
-    :param idmlib. profile: The user profile
+    :param idmlib.idmobject.Profile profile: The user profile
     :return: Set of groups in the profiles roles in format hostid:groupid
     :rtype: set
     """
