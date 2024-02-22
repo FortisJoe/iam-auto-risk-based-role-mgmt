@@ -8,7 +8,7 @@ class DeviationType(Enum):
     DEFICIT = 2
 
     def __str__(self):
-        if self.value == self.SURPLUS:
+        if self.value == self.SURPLUS.value:
             return "Surplus"
         else:
             return "Deficit"
