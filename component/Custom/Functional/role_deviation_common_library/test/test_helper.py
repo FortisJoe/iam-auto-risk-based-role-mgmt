@@ -7,9 +7,6 @@ from Functional.role_deviation_common_library.helper import (
     get_account_risk_information,
     get_group_risk_information
 )
-from Functional.role_deviation_risk_analysis.analyse import (
-    RiskInformation
-)
 from idmlib.idapi import APIError
 
 
