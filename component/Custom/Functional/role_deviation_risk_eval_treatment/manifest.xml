@@ -1,6 +1,6 @@
 <component>
   <description>
-	Provides common methods used across the risk deviation solution
+	Provides evaluation and treatment logic for the risk deviation solution
   </description>
 
   <version>1.0</version>
@@ -8,7 +8,10 @@
   <priority>1</priority>
 
   <extension type="include">
-    <filename>helper.py</filename>
+    <filename>evaluation.py</filename>
+  </extension>
+  <extension type="include">
+    <filename>treatment.py</filename>
   </extension>
 
 </component>

@@ -1,25 +1,15 @@
 <component>
   <description>
-	Provides a plugable interface and framework to calculate the risk
-    of a given object either by the class name or the overridden label.
-    Will utilize hid_risk_logic_mapping table in extdb to determine which
-    components will be used for each action.
-    
-    The RiskScoreClassificationPolicies will then be used to map ranges
-    of risk scores to static labels for easier usage.
+	Provides the risk analysis logic for the risk deviation solution
   </description>
 
   <version>1.0</version>
   <removable>True</removable>
   <priority>1</priority>
 
-  <depends>Functional.hid_extdb</depends>
-
   <extension type="include">
-    <filename>model.py</filename>
+    <filename>analyse.py</filename>
   </extension>
 
-  <configdata component="Functional.role_deviation_risk_classification_evaluation_treatment.model.RiskClassficiationEvalTreatmentLookup">
-  	<filename>data\data.csv</filename>
-  </configdata>
+  <depends>Functional.role_deviation_risk_eval_treatment</depends>
 </component>
