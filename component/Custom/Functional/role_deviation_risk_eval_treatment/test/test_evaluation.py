@@ -1,5 +1,5 @@
-from idmlib.components.test import CommonTest
-from unittest.mock import MagicMock, patch
+from idmlib.components.test import CommonTest, InstalledComponent, CommonModel
+from unittest.mock import ANY, MagicMock, patch
 
 from Functional.role_deviation_risk_analysis.analyse import (
     DeviationType,
@@ -19,129 +19,154 @@ from Functional.role_deviation_risk_eval_treatment.treatment import (
 
 class TestRiskEvaluation(CommonTest):
 
+    @classmethod
+    def setUp(cls):
+        """Performs set up for the test class."""
+
+        InstalledComponent(
+            'Functional.role_deviation_risk_classification').install()
+
+    @classmethod
+    def tearDown(cls):
+        """Performs tear down for the test class."""
+
+        InstalledComponent(
+            'Functional.role_deviation_risk_classification').teardown()
+
     @patch.object(RiskTreatment, "take_no_action")
     def test_evaluation_surplus_no_treatment(self, take_no_action):
+        lookup = RiskClassficiationEvalTreatmentLookup(
+            deviation="Surplus",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="No Action"
+        )
+        RiskClassficiationEvalTreatmentLookup.create(
+            deviation="Surplus",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="No Action"
+        )
         evaluation = RiskEvaluation()
         risk_input = MagicMock()
         deviation = DeviationType.SURPLUS
         risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "No Action"
-        with patch(RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level, return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            take_no_action.assert_called_with(risk_input, 97.6, treatment)
+        evaluation.evaluate(risk_input, 97.6)
+        take_no_action.assert_called_with(risk_input, 97.6, lookup)
 
     @patch.object(RiskTreatment, "inform")
     def test_evaluation_surplus_inform(self, inform):
+        lookup = RiskClassficiationEvalTreatmentLookup(
+            deviation="Surplus",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Inform"
+        )
+        RiskClassficiationEvalTreatmentLookup.create(
+            deviation="Surplus",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Inform"
+        )
         evaluation = RiskEvaluation()
         risk_input = MagicMock()
         deviation = DeviationType.SURPLUS
         risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "Inform"
-        with patch(
-                RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level,
-                return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            inform.assert_called_with(risk_input, 97.6, treatment)
+        evaluation.evaluate(risk_input, 97.6)
+        inform.assert_called_with(risk_input, 97.6, lookup)
 
-    @patch.object(RiskTreatment, "action")
+    @patch.object(RiskTreatment, "raise_access_request")
     def test_evaluation_surplus_action(self, action):
+        lookup = RiskClassficiationEvalTreatmentLookup(
+            deviation="Surplus",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Action"
+        )
+        RiskClassficiationEvalTreatmentLookup.create(
+            deviation="Surplus",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Action"
+        )
         evaluation = RiskEvaluation()
         risk_input = MagicMock()
         deviation = DeviationType.SURPLUS
         risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "Action"
-        with patch(
-                RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level,
-                return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            action.assert_called_with(risk_input, 97.6, treatment)
-
-    @patch.object(RiskTreatment, "take_no_action")
-    @patch.object(RiskTreatment, "inform")
-    @patch.object(RiskTreatment, "action")
-    def test_evaluation_surplus_different_type(self, take_no_action, inform, action):
-        evaluation = RiskEvaluation()
-        risk_input = MagicMock()
-        deviation = DeviationType.SURPLUS
-        risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "Unknown"
-        with patch(
-                RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level,
-                return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            take_no_action.assert_not_called()
-            inform.assert_not_called()
-            action.assert_not_called()
+        evaluation.evaluate(risk_input, 97.6)
+        action.assert_called_with(risk_input, 97.6, lookup)
 
     @patch.object(RiskTreatment, "take_no_action")
     def test_evaluation_deficit_no_treatment(self, take_no_action):
+        lookup = RiskClassficiationEvalTreatmentLookup(
+            deviation="Deficit",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="No Action"
+        )
+        RiskClassficiationEvalTreatmentLookup.create(
+            deviation="Deficit",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="No Action"
+        )
         evaluation = RiskEvaluation()
         risk_input = MagicMock()
         deviation = DeviationType.DEFICIT
         risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "No Action"
-        with patch(
-                RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level,
-                return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            take_no_action.assert_called_with(risk_input, 97.6, treatment)
+        evaluation.evaluate(risk_input, 97.6)
+        take_no_action.assert_called_with(risk_input, 97.6, lookup)
 
     @patch.object(RiskTreatment, "inform")
     def test_evaluation_deficit_inform(self, inform):
+        lookup = RiskClassficiationEvalTreatmentLookup(
+            deviation="Deficit",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Inform"
+        )
+        RiskClassficiationEvalTreatmentLookup.create(
+            deviation="Deficit",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Inform"
+        )
         evaluation = RiskEvaluation()
         risk_input = MagicMock()
         deviation = DeviationType.DEFICIT
         risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "Inform"
-        with patch(
-                RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level,
-                return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            inform.assert_called_with(risk_input, 97.6, treatment)
+        evaluation.evaluate(risk_input, 97.6)
+        inform.assert_called_with(risk_input, 97.6, lookup)
 
-    @patch.object(RiskTreatment, "action")
+    @patch.object(RiskTreatment, "raise_access_request")
     def test_evaluation_deficit_action(self, action):
+        lookup = RiskClassficiationEvalTreatmentLookup(
+            deviation="Deficit",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Action"
+        )
+        RiskClassficiationEvalTreatmentLookup.create(
+            deviation="Deficit",
+            classification="Low",
+            min_score=0.0,
+            max_score=100,
+            treatment="Action"
+        )
         evaluation = RiskEvaluation()
         risk_input = MagicMock()
         deviation = DeviationType.DEFICIT
         risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "Action"
-        with patch(
-                RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level,
-                return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            action.assert_called_with(risk_input, 97.6, treatment)
-
-    @patch.object(RiskTreatment, "take_no_action")
-    @patch.object(RiskTreatment, "inform")
-    @patch.object(RiskTreatment, "action")
-    def test_evaluation_deficit_different_type(self, take_no_action, inform,
-                                               action):
-        evaluation = RiskEvaluation()
-        risk_input = MagicMock()
-        deviation = DeviationType.DEFICIT
-        risk_input.type_of_deviation = deviation
-        treatment = MagicMock()
-        treatment.treatment = "Unknown"
-        with patch(
-                RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level,
-                return_value=treatment) as p:
-            evaluation.evaluate(risk_input, 97.6)
-            p.assert_called_with(97.6, deviation)
-            take_no_action.assert_not_called()
-            inform.assert_not_called()
-            action.assert_not_called()
+        evaluation.evaluate(risk_input, 97.6)
+        action.assert_called_with(risk_input, 97.6, lookup)
