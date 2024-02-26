@@ -56,7 +56,7 @@ class RiskTreatment:
             risk_score,
             treatment
     ):
-        log.info(f"Need to inmform for a risk score of {risk_score}, send email informing of this")
+        log.info(f"Need to inform for a risk score of {risk_score}, send email informing of this")
         template = self._get_mako_template(self._notify_email_mako)
         data = {"risk_input": risk_input, "risk_score": risk_score, "treatment": treatment}
         html = template.get_body_html(data,
