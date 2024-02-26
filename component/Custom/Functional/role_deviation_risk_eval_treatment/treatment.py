@@ -56,9 +56,10 @@ class RiskTreatment:
             risk_score,
             treatment
     ):
-        log.info(f"Need to inmform for a risk score of {risk_score}, send email informing of this")
+        log.info(f"Need to inform for a risk score of {risk_score}, send email informing of this")
         template = self._get_mako_template(self._notify_email_mako)
-        html = template.get_body_html({"risk_input": risk_input, "risk_score": risk_score, "treatment": treatment},
+        data = {"risk_input": risk_input, "risk_score": risk_score, "treatment": treatment}
+        html = template.get_body_html(data,
                                       None)
         subject = template.get_subject()
         self.send_email(self._notify_email_addresses, html, subject)
@@ -76,7 +77,7 @@ class RiskTreatment:
         subject = template.get_subject()
         self.send_email(self._action_email_addresses, html, subject)
         log.info(f"Raising an access request")
-        request = Request
+        request = Request()
         request.preqid = self._pdr_id
         request.recipid = risk_input.profile.userid
         request.attr_actions_populate = True
