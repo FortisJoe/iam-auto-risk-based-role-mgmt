@@ -11,8 +11,6 @@ from Functional.role_deviation_risk_identification_exit_trap.exit import (
     ExitTrap
 )
 
-from Functional.role_deviation_common_library import helper
-
 
 class TestExitTrap(CommonTest):
 
