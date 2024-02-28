@@ -3,11 +3,10 @@ from idmlib.components.test import CommonTest, InstalledComponent
 from idmlib.idapi import APIError
 from idmlib.idmemail import Email
 from idmlib.idmobject import Request
-from unittest.mock import ANY, MagicMock, patch
+from unittest.mock import MagicMock, patch
 
-from Functional.role_deviation_risk_analysis.analyse import DeviationType
 from Functional.hid_global_configuration.model import GlobalConfiguration
-
+from Functional.role_deviation_risk_analysis.analyse import DeviationType
 from Functional.role_deviation_risk_eval_treatment.treatment import RiskTreatment
 
 
