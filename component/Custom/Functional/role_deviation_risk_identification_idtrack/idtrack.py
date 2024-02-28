@@ -1,5 +1,6 @@
 from idmlib.components import component_log
 from idmlib.components.extension import ExtScript
+from idmlib.idmobject import Profile
 
 from Functional.role_deviation_common_library.helper import (
     get_account_risk_information,
@@ -42,7 +43,7 @@ class IDTrack(ExtScript):
 
         """
 
-        if profile and profile.is_valid:
+        if profile and isinstance(profile, Profile) and profile.is_valid:
             targets_with_accounts_in_roles = get_target_accounts_in_roles(
                 profile
             )
@@ -71,7 +72,7 @@ class IDTrack(ExtScript):
         :param dict reqdict: A dict of requests, passed to all diff_* methods.
 
         """
-        if profile and profile.is_valid:
+        if profile and isinstance(profile, Profile) and profile.is_valid:
             targets_with_accounts_in_roles = get_target_accounts_in_roles(
                 profile
             )
@@ -99,7 +100,7 @@ class IDTrack(ExtScript):
         :param dict reqdict: A dict of requests, passed to all diff_* methods.
 
         """
-        if profile and profile.is_valid:
+        if profile and isinstance(profile, Profile) and profile.is_valid:
             groups_in_roles = get_groups_in_roles(profile)
             for group in groups:
                 group_concat = f"{group.hostid}:{group.groupid}"
@@ -127,7 +128,7 @@ class IDTrack(ExtScript):
         :param dict reqdict: A dict of requests, passed to all diff_* methods.
 
         """
-        if profile and profile.is_valid:
+        if profile and isinstance(profile, Profile) and profile.is_valid:
             groups_in_roles = get_groups_in_roles(profile)
             for group in groups:
                 group_concat = f"{group.hostid}:{group.groupid}"
