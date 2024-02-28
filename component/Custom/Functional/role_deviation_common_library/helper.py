@@ -55,8 +55,17 @@ def get_groups_in_roles(profile):
     :rtype: set
     """
     groups_in_roles = set()
-    for group in profile.groups:
-        groups_in_roles.add(f"{group.hostid}:{group.groupid}")
+    for role in profile.roles:
+        for resource in core.api.RoleResourceList(
+                role.roleid,
+                True,
+                True,
+                True
+        ):
+            if resource["membertype"] == "MANAGEDGROUP":
+                groups_in_roles.add(
+                    f"{resource['memberid']}:{resource['groupid']}"
+                )
     return groups_in_roles
 
 

@@ -107,41 +107,69 @@ class TestCommonLibrary(CommonTest):
         results.add("SAP_GRC")
         self.assertSetEqual(accounts, results)
 
-    def test_get_groups_in_roles_no_groups(self):
+    def test_get_groups_in_roles_no_roles(self):
         """ Tests result when no groups in roles """
         profile = MagicMock()
-        groups = list()
-        profile.groups = groups
+        roles = list()
+        profile.roles = roles
         result_groups = get_groups_in_roles(profile)
         self.assertSetEqual(result_groups, set())
 
-    def test_get_groups_in_roles_1_group(self):
+    @patch('idmlib.core.api')
+    def test_get_groups_in_roles_no_groups(self, api):
+        """ Tests result when no groups in roles """
+        profile = MagicMock()
+        roles = list()
+        role = MagicMock()
+        role.roleid.return_value = "ROLE1"
+        roles.append(role)
+        profile.roles = roles
+        api.RoleResourceList.return_value = []
+        result_groups = get_groups_in_roles(profile)
+        self.assertSetEqual(result_groups, set())
+
+    @patch('idmlib.core.api')
+    def test_get_groups_in_roles_1_group(self, api):
         """ Tests result when 1 group in roles """
         profile = MagicMock()
-        groups = list()
-        group = MagicMock()
-        group.hostid = "AD"
-        group.groupid = "Group1"
-        groups.append(group)
-        profile.groups = groups
+        roles = list()
+        role = MagicMock()
+        role.roleid.return_value = "ROLE1"
+        roles.append(role)
+        profile.roles = roles
+        api.RoleResourceList.return_value = [
+            {
+                "membertype": "MANAGEDGROUP",
+                "memberid": "AD",
+                "groupid": "Group1"
+            }
+        ]
         result_groups = get_groups_in_roles(profile)
         expected = set()
         expected.add("AD:Group1")
         self.assertSetEqual(result_groups, expected)
 
-    def test_get_groups_in_roles_2_groups(self):
+    @patch('idmlib.core.api')
+    def test_get_groups_in_roles_2_groups(self, api):
         """ Tests result when 2 groups in roles """
         profile = MagicMock()
-        groups = list()
-        group1 = MagicMock()
-        group1.hostid = "AD"
-        group1.groupid = "Group1"
-        group2 = MagicMock()
-        group2.hostid = "SAP_GRC"
-        group2.groupid = "Group2"
-        groups.append(group1)
-        groups.append(group2)
-        profile.groups = groups
+        roles = list()
+        role = MagicMock()
+        role.roleid.return_value = "ROLE1"
+        roles.append(role)
+        profile.roles = roles
+        api.RoleResourceList.return_value = [
+            {
+                "membertype": "MANAGEDGROUP",
+                "memberid": "AD",
+                "groupid": "Group1"
+            },
+            {
+                "membertype": "MANAGEDGROUP",
+                "memberid": "SAP_GRC",
+                "groupid": "Group2"
+            }
+        ]
         result_groups = get_groups_in_roles(profile)
         expected = set()
         expected.add("AD:Group1")
