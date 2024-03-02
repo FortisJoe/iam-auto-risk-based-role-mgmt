@@ -13,6 +13,9 @@ log = component_log.getChild(__name__)
 class RiskTreatment:
 
     def __init__(self):
+        """ Fetches notification content, send addresses and PDR
+
+        """
         config_rows = ConfigData("RDRM").get_rows()
         self._mako_template_root = core.instance.path_instance
         self._no_action_email_mako = None
@@ -44,6 +47,15 @@ class RiskTreatment:
             risk_score,
             treatment
     ):
+        """ Informs specified addresses that no action is being undertaken
+
+        :param risk_input: The Risk Input data
+        :type: risk_input: Functional.risk_deviation_risk_analysis.RiskInformation
+        :param risk_score: The calculated risk score
+        :type risk_score: double
+        :param treatment: The treatment type looked up for this risk
+
+        """
         log.info(f"Taking no action for a risk score of {risk_score}, send email informing of this")
         template = self._get_mako_template(self._no_action_email_mako)
         html = template.get_body_html({"risk_input": risk_input, "risk_score": risk_score, "treatment": treatment}, None)
@@ -56,6 +68,15 @@ class RiskTreatment:
             risk_score,
             treatment
     ):
+        """ Informs specified addresses that further investigation should occur
+
+        :param risk_input: The Risk Input data
+        :type: risk_input: Functional.risk_deviation_risk_analysis.RiskInformation
+        :param risk_score: The calculated risk score
+        :type risk_score: double
+        :param treatment: The treatment type looked up for this risk
+
+        """
         log.info(f"Need to inform for a risk score of {risk_score}, send email informing of this")
         template = self._get_mako_template(self._notify_email_mako)
         data = {"risk_input": risk_input, "risk_score": risk_score, "treatment": treatment}
@@ -70,6 +91,15 @@ class RiskTreatment:
             risk_score,
             treatment
     ):
+        """ Informs specified addresses of change and undertakes it
+
+        :param risk_input: The Risk Input data
+        :type: risk_input: Functional.risk_deviation_risk_analysis.RiskInformation
+        :param risk_score: The calculated risk score
+        :type risk_score: double
+        :param treatment: The treatment type looked up for this risk
+
+        """
         log.info(f"Need to raise an access request for a risk score of {risk_score}, send email informing of this")
         template = self._get_mako_template(self._action_email_mako)
         html = template.get_body_html({"risk_input": risk_input, "risk_score": risk_score, "treatment": treatment},
@@ -129,6 +159,11 @@ class RiskTreatment:
             log.error(f"Failed to send email because {e}")
 
     def submit_request(self, request):
+        """ Submits an access request change
+
+        :param request: The request to submit
+        :type request: idmlib.idmobject.Request
+        """
         # Distributes requests amongst app nodes
         serverid = 'RANDOM'
         # Attempt request submission.
