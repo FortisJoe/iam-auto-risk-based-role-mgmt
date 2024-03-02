@@ -124,7 +124,12 @@ def _get_attributes(is_surplus):
     return attrs
 
 
-def _fetch_risk_resource_attributes(attrs, restype, resourceid1, resourceid2=""):
+def _fetch_risk_resource_attributes(
+        attrs,
+        restype,
+        resourceid1,
+        resourceid2=""
+):
     confidentiality = None
     integrity = None
     availability = None

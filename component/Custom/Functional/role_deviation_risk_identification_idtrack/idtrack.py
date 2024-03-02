@@ -65,7 +65,7 @@ class IDTrack(ExtScript):
     def diff_account_deleted(self, accounts, reqdict, profile, change):
         """Process accounts that were deleted.
 
-        :param list accounts: Deleted :any:`idmlib.idmobject.ResourceAccount` 
+        :param list accounts: Deleted :any:`idmlib.idmobject.ResourceAccount`
         objects.
         :param change: The :any: `idmlib.diffset.DiffItem` change.
         :param profile: The :any:`idmlib.idmobject.Profile`, if available.
@@ -144,7 +144,3 @@ class IDTrack(ExtScript):
                         risk_info
                     )
                     self.risk_analysis.analyse(risk_input)
-
-
-
-

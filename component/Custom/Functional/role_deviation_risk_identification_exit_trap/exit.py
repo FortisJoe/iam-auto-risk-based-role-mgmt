@@ -52,8 +52,9 @@ class ExitTrap(ExtScript):
             return
 
         if request.status != 'C':
-            self.log.info('Wrong request status: {}. Cannot continue.'
-                               .format(request.status))
+            self.log.info(
+                f'Wrong request status: {request.status}. Cannot continue.'
+            )
             return
 
         recipient = self.exit.recipient

@@ -22,14 +22,16 @@ class RiskEvaluation:
         """ Evaluates which treatment should occur
 
         :param risk_input: The Risk data for the risk
-        :type risk_input: Functional.risk_deviation_risk_analysis.RiskInformation
+        :type risk_input:
+        Functional.risk_deviation_risk_analysis.RiskInformation
         :param risk_score: The calculated risk score
         :type risk_score: double
         """
-        treatment = RiskClassficiationEvalTreatmentLookup.get_treatment_for_risk_level(
-            risk_score,
-            str(risk_input.type_of_deviation)
-        )
+        treatment = RiskClassficiationEvalTreatmentLookup\
+            .get_treatment_for_risk_level(
+                risk_score,
+                str(risk_input.type_of_deviation)
+            )
         if treatment.treatment == "No Action":
             self._treatment.take_no_action(
                 risk_input,
@@ -49,4 +51,7 @@ class RiskEvaluation:
                 treatment
             )
         else:
-            log.error(f"Supplied Risk Treatment {treatment.treatment} is not recognised.")
+            log.error(
+                f"Supplied Risk Treatment {treatment.treatment} is not "
+                f"recognised."
+            )

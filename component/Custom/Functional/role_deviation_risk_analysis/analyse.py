@@ -1,6 +1,8 @@
 from enum import Enum
 
-from Functional.role_deviation_risk_eval_treatment.evaluation import RiskEvaluation
+from Functional.role_deviation_risk_eval_treatment.evaluation import (
+    RiskEvaluation
+)
 
 
 class DeviationType(Enum):
@@ -15,8 +17,14 @@ class DeviationType(Enum):
 
 
 class RiskInformation:
-    
-    def __init__(self, confidentiality_impact, integrity_impact, availability_impact, annual_rate_of_occurrence):
+
+    def __init__(
+            self,
+            confidentiality_impact,
+            integrity_impact,
+            availability_impact,
+            annual_rate_of_occurrence
+    ):
         """
 
         :param confidentiality_impact: The impact on confidentiality
@@ -27,8 +35,6 @@ class RiskInformation:
         :type availability_impact: int
         :param annual_rate_of_occurrence: How often per year this risk occurs
         :type annual_rate_of_occurrence: double
-        
-        
         """
         self.confidentiality_impact = confidentiality_impact
         self.integrity_impact = integrity_impact
@@ -37,7 +43,7 @@ class RiskInformation:
 
 
 class RiskAnalysisInput:
-    
+
     def __init__(self, profile, resource, type_of_deviation, risk_information):
         """
 
