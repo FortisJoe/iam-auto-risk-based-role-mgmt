@@ -11,7 +11,7 @@
 
     <depends>Functional.role_deviation_risk_analysis</depends>
 
-    <configdata component="Functional.role_deviation_risk_classification_evaluation_treatment.model.RiskClassficiationEvalTreatmentLookup">
+    <configdata component="Functional.role_deviation_risk_classification.model.RiskClassficiationEvalTreatmentLookup">
   	    <filename>data\classification.csv</filename>
     </configdata>
     <configdata component="Functional.hid_global_configuration.config.GlobalConfiguration">
