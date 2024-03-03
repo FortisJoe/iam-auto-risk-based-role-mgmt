@@ -14,7 +14,6 @@
     <depends>Data.attribute_deficit_integrity_impact</depends>
     <depends>Data.resourceattrgroupucpoint_allusers</depends>
     <depends>Data.resourceattrgroupucpoint_entitlement_expiry_config</depends>
-    <depends>Data.resourceattrgroupucpoint_group_create_users</depends>
     
     <configdata component="Functional.hid_configuration.json_loader.ConfigHook">
         <filename>config.json</filename>
