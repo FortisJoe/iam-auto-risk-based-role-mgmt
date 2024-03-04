@@ -15,6 +15,6 @@
   	    <filename>data\classification.csv</filename>
     </configdata>
     <configdata component="Functional.hid_global_configuration.config.GlobalConfiguration">
-        <filename>data\initial_data.csv</filename>
+        <filename>data\global_config.csv</filename>
     </configdata>
 </component>
