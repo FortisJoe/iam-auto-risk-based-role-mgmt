@@ -25,6 +25,10 @@ Each managed group and template should have the surplus (user has entitlement wi
 
 ![Configuration](https://i.ibb.co/MsP0fhc/screenshot.png)
 
+The risk levels should be configured to match your risk acceptance levels, in the extdb table role_deviation_risk_classification_evaluation_treatment
+
+![Table](https://i.ibb.co/LZS2pdd/Capture-Table.png)
+
 ## Usage
 
 There are 3 mechanisms in how this system will undertake automated risk-based role management.
@@ -40,3 +44,47 @@ After a discovery takes place, changes on target systems for each user will be d
 ### Periodic Checks
 
 Periodically, for all users, each user will have the access they do have, compared to the access they should have according to the role definitions of the roles they are members of. Any surplus or deficit is sent for analysis.
+
+### Analysis
+
+The risk score is calculated according to the following algorithm
+
+Let us make the following definitions:
+
+	a - The availability impact, from 0 to 10.
+
+	c - The confidentiality impact, from 0 to 10.
+
+	i - The integrity impact, from 0 to 10.
+ 
+	aro - The annual rate of occurrence.    
+
+	r - The calculated risk level. 
+
+We can then define our risk calculation as the following:
+
+r=aro×(a+c+i)
+
+The calculated risk score is then sent for Evaluation
+
+### Evaluation
+
+The risk score is compared to the various treatment options, and the one that matches the risk score is selected.
+
+The options are:
+
+- No Action: Only send an email to inform of no action
+- Inform: Send an email informing a team to investigate this deviation
+- Raise Access Request: Automatically raise an access request to add/remove access according to it's deviation
+
+### Treatment
+
+The treatment process takes the specified treatment and performs it.
+
+## Testing
+
+The unit tests included in the components require the installation of pytest to run.
+
+`pip install pytest`
+
+Tests need to be ran on an installation of Bravura Security Identity and the tests must be run from the component\Custom folder.
