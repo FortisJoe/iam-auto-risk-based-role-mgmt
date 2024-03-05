@@ -12,11 +12,15 @@
     <depends>Data.resourceattrgroup_surplus_risk</depends>
 
     <depends>Functional.role_deviation_risk_analysis</depends>
+    <depends>Functional.im_policy_authorisation</depends>
 
     <configdata component="Functional.role_deviation_risk_classification.model.RiskClassficiationEvalTreatmentLookup">
   	    <filename>data\classification.csv</filename>
     </configdata>
     <configdata component="Functional.hid_global_configuration.config.GlobalConfiguration">
         <filename>data\global_config.csv</filename>
+    </configdata>
+    <configdata component="Functional.im_policy_authorization.model.PolicyAuthorization">
+        <filename>data\policy_authorization.csv</filename>
     </configdata>
 </component>

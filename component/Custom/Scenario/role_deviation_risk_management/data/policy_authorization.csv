@@ -1,0 +1,2 @@
+Comment,SkipRemaining,RequesterUserclass,RecipientUserclass,RelativeUserclass,RelativeRequester,RelativeRecipient,PDRId,Attribute,Operation,ManagedGroup,Role,Target,Action,AuthUserclass,AuthAuthorizer,AuthRequester,AuthRecipient,AuthAttribute,SampleSize,MinAuthorizers,Phase,AutoReject,Authnote
+,All,,,,,,RESOLVE_ROLE_DEVIATIONS,,,,,,flush,,,,,,,0,,FALSE,Resolving Role Deviations is automatically approved
