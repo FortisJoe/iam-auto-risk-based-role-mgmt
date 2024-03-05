@@ -8,6 +8,8 @@
 
     <depends>Data.scheduledtask_role_deviation_check</depends>
     <depends>Data.pdr_resolve_role_deviations</depends>
+    <depends>Data.resourceattrgroup_deficit_risk</depends>
+    <depends>Data.resourceattrgroup_surplus_risk</depends>
 
     <depends>Functional.role_deviation_risk_analysis</depends>
 
