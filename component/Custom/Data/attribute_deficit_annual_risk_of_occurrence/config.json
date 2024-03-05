@@ -15,7 +15,7 @@
     "enforceother": true,
     "enforceupdate": true,
     "falsevalue": "!!!__FALSE__",
-    "fmthelp": "Integer or Decimal Value (0.5 = 2 times a year, 2 = once every 2",
+    "fmthelp": "Integer or Decimal Value (0.5 = 2 times a year, 2 = once every 2)",
     "fmtvalid": "",
     "format": "",
     "hasdefaults": false,
