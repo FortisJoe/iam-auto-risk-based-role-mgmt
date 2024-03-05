@@ -18,7 +18,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "1",
-        "viewvalue": "\u00a30-1,000 (Lowest Risk)"
+        "viewvalue": "1 (Lowest Risk)"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -29,7 +29,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "10",
-        "viewvalue": "\u00a3250,000+ (Highest Risk)"
+        "viewvalue": "10 (Highest Risk)"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -40,7 +40,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "2",
-        "viewvalue": "\u00a31,000-5,000"
+        "viewvalue": "2"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -51,7 +51,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "3",
-        "viewvalue": "\u00a35,000-10,000"
+        "viewvalue": "3"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -62,7 +62,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "4",
-        "viewvalue": "\u00a310,000-25,000"
+        "viewvalue": "4"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -73,7 +73,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "5",
-        "viewvalue": "\u00a325,000-\u00a350,000"
+        "viewvalue": "5"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -84,7 +84,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "6",
-        "viewvalue": "\u00a350,000-75,000"
+        "viewvalue": "6"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -95,7 +95,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "7",
-        "viewvalue": "\u00a375,000-100,000"
+        "viewvalue": "7"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -106,7 +106,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "8",
-        "viewvalue": "\u00a3100,000-150,000"
+        "viewvalue": "8"
       },
       "Type": "AttributeRestrictedValue"
     },
@@ -117,7 +117,7 @@
         "parentseqno": 0,
         "parentvalue": "",
         "value": "9",
-        "viewvalue": "\u00a3150,000-250,000"
+        "viewvalue": "9"
       },
       "Type": "AttributeRestrictedValue"
     }
