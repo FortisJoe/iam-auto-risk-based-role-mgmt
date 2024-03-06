@@ -12,6 +12,11 @@
     <depends>Data.resourceattrgroup_surplus_risk</depends>
 
     <depends>Functional.role_deviation_risk_analysis</depends>
+    <depends>Functional.role_deviation_risk_classification</depends>
+    <depends>Functional.role_deviation_risk_eval_treatment</depends>
+    <depends>Functional.role_deviation_risk_identification_exit_trap</depends>
+    <depends>Functional.role_deviation_risk_identification_idtrack</depends>
+    <depends>Functional.role_deviation_risk_identification_schedtask</depends>
     <depends>Functional.im_policy_authorisation</depends>
 
     <configdata component="Functional.role_deviation_risk_classification.model.RiskClassficiationEvalTreatmentLookup">

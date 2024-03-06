@@ -6,7 +6,9 @@
     <priority>50</priority>
     <removable>True</removable>
 
+    <depends>Functional.im_idtrack</depends>
     <depends>Functional.role_deviation_risk_analysis</depends>
+    <depends>Functional.role_deviation_common_library</depends>
 
     <extension type="script">
         <filename>idtrack.py</filename>

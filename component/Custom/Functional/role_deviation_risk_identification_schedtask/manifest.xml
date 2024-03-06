@@ -7,6 +7,7 @@
     <removable>True</removable>
 
     <depends>Functional.role_deviation_risk_analysis</depends>
+    <depends>Functional.role_deviation_common_library</depends>
 
     <extension type="include">
         <filename>process.py</filename>
