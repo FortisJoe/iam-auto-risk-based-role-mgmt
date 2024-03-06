@@ -5,12 +5,12 @@
     <%
     from idmlib.idmobject import ResourceGroup, ResourceTemplate
     from Functional.role_deviation_risk_analysis.analyse import DeviationType
-    recipient_name = risk_info.profile.alias
-    if isinstance(risk_info.resource, ResourceTemplate):
-        deviation = f"{risk_info.resource.hostid} account"
+    recipient_name = recipient_name = f"{risk_input.profile.get_attr_value('FIRST_NAME')} {risk_input.profile.get_attr_value('LAST_NAME')}"
+    if isinstance(risk_input.resource, ResourceTemplate):
+        deviation = f"{risk_input.resource.hostid} account"
     else:
-        deviation = f"membership of {risk_info.resource.groupid} on the {risk.resource.hostid} system"
-    deviation_type = str(risk_info.type_of_deviation)
+        deviation = f"membership of {risk_input.resource.groupid} on the {risk_input.resource.hostid} system"
+    deviation_type = str(risk_input.type_of_deviation)
     %>
     <html>
         <body>
