@@ -55,14 +55,20 @@ class RiskClassficiationEvalTreatmentLookup(BaseModel):
     """
     @staticmethod
     def get_treatment_for_risk_level(risk_score, deviation):
-        return RiskClassficiationEvalTreatmentLookup.select().where(
-            RiskClassficiationEvalTreatmentLookup.deviation == deviation &
-            RiskClassficiationEvalTreatmentLookup.min_score <= risk_score &
-            (
-                RiskClassficiationEvalTreatmentLookup.max_score >> None |
-                RiskClassficiationEvalTreatmentLookup.min_score > risk_score
-            )
-        ).get()
+        for result in RiskClassficiationEvalTreatmentLookup.select().where(
+            RiskClassficiationEvalTreatmentLookup.deviation == deviation
+        ):
+            if (
+                result.max_score and
+                result.min_score <= risk_score < result.max_score
+            ):
+                return result
+            elif (
+                result.min_score <= risk_score and
+                not result.max_score
+            ):
+                return result
+        return None
 
     class Meta:
         """Meta class overrides for the Table"""
