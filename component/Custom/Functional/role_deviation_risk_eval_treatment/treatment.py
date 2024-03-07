@@ -1,7 +1,9 @@
 import os
 
 from idmlib import core, idmemail
-from idmlib.idmobject import Request
+from idmlib.idmobject import (
+    Request, ResourceAccount, ResourceGroup, ResourceTemplate
+)
 from idmlib.components import component_log
 
 from Functional.hid_email_notification import template
@@ -114,6 +116,49 @@ class RiskTreatment:
         request.reason = (
             "Raising a request to correct a deviation from role access."
         )
+        if (
+            isinstance(risk_input.resource, ResourceAccount) and
+            str(risk_input.type_of_deviation) == "Surplus"
+        ):
+            delete_account = ResourceAccount(
+                risk_input.resource.acctid,
+                risk_input.resource.hostid,
+                risk_input.resource.shortid
+            )
+            delete_account.operation = "DELU"
+            request.resources = [delete_account]
+        elif (
+            isinstance(risk_input.resource, ResourceTemplate) and
+            str(risk_input.type_of_deviation) == "Deficit"
+        ):
+            add_account = ResourceTemplate(
+                risk_input.resource.tplid,
+                risk_input.resource.hostid,
+            )
+            add_account.operation = "ACUA"
+            request.resources = [add_account]
+        elif (
+            isinstance(risk_input.resource, ResourceGroup) and
+            str(risk_input.type_of_deviation) == "Surplus"
+        ):
+            remove_resource = ResourceGroup(
+                risk_input.resource.groupid,
+                risk_input.resource.hostid,
+                risk_input.resource.acctid
+            )
+            remove_resource.operation = "GRUD"
+            request.resources = [remove_resource]
+        elif (
+            isinstance(risk_input.resource, ResourceGroup) and
+            str(risk_input.type_of_deviation) == "Deficit"
+        ):
+            add_resource = ResourceGroup(
+                risk_input.resource.groupid,
+                risk_input.resource.hostid,
+                risk_input.resource.acctid
+            )
+            add_resource.operation = "GRUA"
+            request.resources = [add_resource]
         self.submit_request(request)
 
     def _get_mako_template(self, mako_template_path):

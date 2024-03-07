@@ -2,7 +2,7 @@ from idmlib import core
 from idmlib.components.test import CommonTest, InstalledComponent
 from idmlib.idapi import APIError
 from idmlib.idmemail import Email
-from idmlib.idmobject import Request
+from idmlib.idmobject import Request, ResourceTemplate, ResourceAccount, ResourceGroup
 from unittest.mock import MagicMock, patch
 
 from Functional.hid_global_configuration.model import GlobalConfiguration
@@ -93,7 +93,7 @@ class TestRiskTreatment(CommonTest):
         add_to.assert_called_with("no@action.com")
         set_content.assert_called_with("HTML No Action (Surplus, 12.3, Low)", html=True)
         set_subject.assert_called_with(f"Subject No Action")
-        send_smtp.asset_called()
+        send_smtp.assert_called()
         api_submit.assert_not_called()
 
     @patch.object(Email, "set_from")
@@ -163,7 +163,7 @@ class TestRiskTreatment(CommonTest):
         add_to.assert_called_with("notify@email.com")
         set_content.assert_called_with("HTML Inform (Deficit, 45.6, Medium)", html=True)
         set_subject.assert_called_with(f"Subject Inform")
-        send_smtp.asset_called()
+        send_smtp.assert_called()
         api_submit.assert_not_called()
 
     @patch.object(Email, "set_from")
@@ -172,7 +172,7 @@ class TestRiskTreatment(CommonTest):
     @patch.object(Email, "set_subject")
     @patch.object(Email, "send_smtp")
     @patch.object(Request, "api_submit")
-    def test_action(self, api_submit, send_smtp, set_subject, set_content, add_to, set_from):
+    def test_action_deficit_account(self, api_submit, send_smtp, set_subject, set_content, add_to, set_from):
         GlobalConfiguration.create(
             namespace="RDRM",
             setting="NO_ACTION_EMAIL_MAKO",
@@ -225,6 +225,8 @@ class TestRiskTreatment(CommonTest):
         risk_input = MagicMock()
         risk_input.type_of_deviation = DeviationType.DEFICIT
         risk_score = 78.9
+        resource = ResourceTemplate("AD_TEMPLATE", "AD")
+        risk_input.resource = resource
         profile = MagicMock()
         risk_input.profile.return_value = profile
         profile.userid.return_value = "user123"
@@ -236,8 +238,233 @@ class TestRiskTreatment(CommonTest):
         add_to.assert_called_with("action@email.com")
         set_content.assert_called_with("HTML Action (Deficit, 78.9, High)", html=True)
         set_subject.assert_called_with(f"Subject Action")
-        send_smtp.asset_called()
-        api_submit.asset_called()
+        send_smtp.assert_called()
+        api_submit.assert_called()
+
+    @patch.object(Email, "set_from")
+    @patch.object(Email, "add_to")
+    @patch.object(Email, "set_content")
+    @patch.object(Email, "set_subject")
+    @patch.object(Email, "send_smtp")
+    @patch.object(Request, "api_submit")
+    def test_action_surplus_account(self, api_submit, send_smtp, set_subject, set_content, add_to, set_from):
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NO_ACTION_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\no_action.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NOTIFY_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\notify.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="ACTION_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\action.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NO_ACTION_EMAIL",
+            key=None,
+            value="no@action.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NOTIFY_EMAIL",
+            key=None,
+            value="notify@email.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="ACTION_EMAIL",
+            key=None,
+            value="action@email.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="PDR",
+            key=None,
+            value="THE_PDR",
+            description=None
+        )
+        risk_input = MagicMock()
+        risk_input.type_of_deviation = DeviationType.DEFICIT
+        risk_score = 78.9
+        resource = ResourceAccount("user123", "AD", "user123")
+        risk_input.resource = resource
+        profile = MagicMock()
+        risk_input.profile.return_value = profile
+        profile.userid.return_value = "user123"
+        treatment = MagicMock()
+        treatment.classification = "High"
+        risk_treatment = RiskTreatment()
+        risk_treatment.raise_access_request(risk_input, risk_score, treatment)
+        set_from.assert_called_with(core.instance.mail_sender_email)
+        add_to.assert_called_with("action@email.com")
+        set_content.assert_called_with("HTML Action (Deficit, 78.9, High)", html=True)
+        set_subject.assert_called_with(f"Subject Action")
+        send_smtp.assert_called()
+        api_submit.assert_called()
+
+    @patch.object(Email, "set_from")
+    @patch.object(Email, "add_to")
+    @patch.object(Email, "set_content")
+    @patch.object(Email, "set_subject")
+    @patch.object(Email, "send_smtp")
+    @patch.object(Request, "api_submit")
+    def test_action_deficit_group(self, api_submit, send_smtp, set_subject, set_content, add_to, set_from):
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NO_ACTION_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\no_action.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NOTIFY_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\notify.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="ACTION_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\action.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NO_ACTION_EMAIL",
+            key=None,
+            value="no@action.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NOTIFY_EMAIL",
+            key=None,
+            value="notify@email.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="ACTION_EMAIL",
+            key=None,
+            value="action@email.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="PDR",
+            key=None,
+            value="THE_PDR",
+            description=None
+        )
+        risk_input = MagicMock()
+        risk_input.type_of_deviation = DeviationType.DEFICIT
+        risk_score = 78.9
+        resource = ResourceGroup("Group1", "AD", acctid="user123")
+        risk_input.resource = resource
+        profile = MagicMock()
+        risk_input.profile.return_value = profile
+        profile.userid.return_value = "user123"
+        treatment = MagicMock()
+        treatment.classification = "High"
+        risk_treatment = RiskTreatment()
+        risk_treatment.raise_access_request(risk_input, risk_score, treatment)
+        set_from.assert_called_with(core.instance.mail_sender_email)
+        add_to.assert_called_with("action@email.com")
+        set_content.assert_called_with("HTML Action (Deficit, 78.9, High)", html=True)
+        set_subject.assert_called_with(f"Subject Action")
+        send_smtp.assert_called()
+        api_submit.assert_called()
+
+    @patch.object(Email, "set_from")
+    @patch.object(Email, "add_to")
+    @patch.object(Email, "set_content")
+    @patch.object(Email, "set_subject")
+    @patch.object(Email, "send_smtp")
+    @patch.object(Request, "api_submit")
+    def test_action_surplus_account(self, api_submit, send_smtp, set_subject, set_content, add_to, set_from):
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NO_ACTION_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\no_action.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NOTIFY_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\notify.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="ACTION_EMAIL_MAKO",
+            key=None,
+            value="component\\Custom\\Functional\\role_deviation_risk_eval_treatment\\test\\data\\action.mako",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NO_ACTION_EMAIL",
+            key=None,
+            value="no@action.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="NOTIFY_EMAIL",
+            key=None,
+            value="notify@email.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="ACTION_EMAIL",
+            key=None,
+            value="action@email.com",
+            description=None
+        )
+        GlobalConfiguration.create(
+            namespace="RDRM",
+            setting="PDR",
+            key=None,
+            value="THE_PDR",
+            description=None
+        )
+        risk_input = MagicMock()
+        risk_input.type_of_deviation = DeviationType.DEFICIT
+        risk_score = 78.9
+        resource = ResourceGroup("Group1", "AD", acctid="user123")
+        risk_input.resource = resource
+        profile = MagicMock()
+        risk_input.profile.return_value = profile
+        profile.userid.return_value = "user123"
+        treatment = MagicMock()
+        treatment.classification = "High"
+        risk_treatment = RiskTreatment()
+        risk_treatment.raise_access_request(risk_input, risk_score, treatment)
+        set_from.assert_called_with(core.instance.mail_sender_email)
+        add_to.assert_called_with("action@email.com")
+        set_content.assert_called_with("HTML Action (Deficit, 78.9, High)", html=True)
+        set_subject.assert_called_with(f"Subject Action")
+        send_smtp.assert_called()
+        api_submit.assert_called()
 
     @patch.object(Email, "set_from")
     @patch.object(Email, "add_to")
@@ -311,5 +538,5 @@ class TestRiskTreatment(CommonTest):
         add_to.assert_called_with("action@email.com")
         set_content.assert_called_with("HTML Action (Surplus, 45.6, High)", html=True)
         set_subject.assert_called_with(f"Subject Action")
-        send_smtp.asset_called()
+        send_smtp.assert_called()
         api.WFRequestCancel.assert_called()
