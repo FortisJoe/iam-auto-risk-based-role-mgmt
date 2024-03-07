@@ -1,5 +1,6 @@
 from idmlib.components import component_log
 from idmlib.components.extension import ExtScript
+from idmlib.diffset import IDTrackBase
 from idmlib.idmobject import Profile
 
 from Functional.role_deviation_common_library.helper import (
@@ -42,6 +43,12 @@ class IDTrack(ExtScript):
         :param dict reqdict: A dict of requests, passed to all diff_* methods.
 
         """
+        if self.idtrack.run_type == IDTrackBase.THRESHOLD_RUN:
+            self.log.info("Not running diff_account_added for threshold run")
+            return
+        elif self.idtrack.run_type == IDTrackBase.DRY_RUN:
+            self.log.info("Not running diff_account_added for dry run")
+            return
 
         if profile and isinstance(profile, Profile) and profile.is_valid:
             targets_with_accounts_in_roles = get_target_accounts_in_roles(
@@ -72,6 +79,13 @@ class IDTrack(ExtScript):
         :param dict reqdict: A dict of requests, passed to all diff_* methods.
 
         """
+        if self.idtrack.run_type == IDTrackBase.THRESHOLD_RUN:
+            self.log.info("Not running diff_account_deleted for threshold run")
+            return
+        elif self.idtrack.run_type == IDTrackBase.DRY_RUN:
+            self.log.info("Not running diff_account_deleted for dry run")
+            return
+
         if profile and isinstance(profile, Profile) and profile.is_valid:
             targets_with_accounts_in_roles = get_target_accounts_in_roles(
                 profile
@@ -100,6 +114,13 @@ class IDTrack(ExtScript):
         :param dict reqdict: A dict of requests, passed to all diff_* methods.
 
         """
+        if self.idtrack.run_type == IDTrackBase.THRESHOLD_RUN:
+            self.log.info("Not running diff_group_member_added for threshold run")
+            return
+        elif self.idtrack.run_type == IDTrackBase.DRY_RUN:
+            self.log.info("Not running diff_group_member_added for dry run")
+            return
+
         if profile and isinstance(profile, Profile) and profile.is_valid:
             groups_in_roles = get_groups_in_roles(profile)
             for group in groups:
@@ -128,6 +149,15 @@ class IDTrack(ExtScript):
         :param dict reqdict: A dict of requests, passed to all diff_* methods.
 
         """
+        if self.idtrack.run_type == IDTrackBase.THRESHOLD_RUN:
+            self.log.info(
+                "Not running diff_group_member_deleted for threshold run"
+            )
+            return
+        elif self.idtrack.run_type == IDTrackBase.DRY_RUN:
+            self.log.info("Not running diff_group_member_deleted for dry run")
+            return
+
         if profile and isinstance(profile, Profile) and profile.is_valid:
             groups_in_roles = get_groups_in_roles(profile)
             for group in groups:

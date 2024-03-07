@@ -1,4 +1,5 @@
 from idmlib.components.test import CommonTest
+from idmlib.diffset import IDTrackBase
 from idmlib.idmobject import Profile
 from unittest.mock import MagicMock, patch, PropertyMock
 
@@ -19,6 +20,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_added_no_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         idtrack.diff_account_added([], {}, None, change)
         analyse.assert_not_called()
@@ -27,6 +29,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_added_profile_not_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock()
         idtrack.diff_account_added([], {}, profile, change)
@@ -36,6 +39,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_added_profile_not_valid(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=False)
@@ -48,6 +52,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_added_role_with_account_no_added_account(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -81,6 +86,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_added_role_with_account_added_account_is_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -117,6 +123,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_added_role_with_no_account_new_account(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -163,6 +170,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_added_role_with_account_added_account_is_not_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -218,6 +226,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_deleted_no_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         idtrack.diff_account_deleted([], {}, None, change)
         analyse.assert_not_called()
@@ -226,6 +235,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_deleted_profile_not_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock()
         idtrack.diff_account_deleted([], {}, profile, change)
@@ -235,6 +245,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_deleted_profile_not_valid(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=False)
@@ -247,6 +258,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_deleted_role_with_account_no_deleted_account(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -280,6 +292,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_deleted_role_with_account_deleted_account_is_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -336,6 +349,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_deleted_role_with_no_account_deleted_account(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -368,6 +382,7 @@ class TestExitTrap(CommonTest):
     def test_diff_account_deleted_role_with_account_deleted_account_is_not_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -409,6 +424,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_added_no_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         idtrack.diff_group_member_added([], {}, None, change)
         analyse.assert_not_called()
@@ -417,6 +433,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_added_profile_not_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock()
         idtrack.diff_group_member_added([], {}, profile, change)
@@ -426,6 +443,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_added_profile_not_valid(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=False)
@@ -438,6 +456,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_added_role_with_account_no_added_account(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -471,6 +490,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_added_role_with_group_added_group_is_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -503,6 +523,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_added_role_with_no_group_new_group(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -544,6 +565,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_added_role_with_group_added_group_is_not_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -589,6 +611,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_deleted_no_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         idtrack.diff_group_member_deleted([], {}, None, change)
         analyse.assert_not_called()
@@ -597,6 +620,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_deleted_profile_not_profile(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock()
         idtrack.diff_group_member_deleted([], {}, profile, change)
@@ -606,6 +630,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_deleted_profile_not_valid(self, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=False)
@@ -618,6 +643,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_deleted_role_with_group_no_deleted_group(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -645,6 +671,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_deleted_role_with_group_deleted_group_is_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -691,6 +718,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_deleted_role_with_no_group_deleted_group(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -718,6 +746,7 @@ class TestExitTrap(CommonTest):
     def test_diff_group_member_deleted_role_with_group_deleted_group_is_not_in_role(self, api, analyse):
         idtrack_plugin = MagicMock()
         idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.WORKFLOW_RUN
         change = MagicMock()
         profile = MagicMock(spec=Profile)
         is_valid = PropertyMock(return_value=True)
@@ -743,4 +772,76 @@ class TestExitTrap(CommonTest):
         groupid = PropertyMock(return_value="Group2")
         type(group).groupid = groupid
         idtrack.diff_group_member_deleted([group], {}, profile, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_account_added_dry_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.DRY_RUN
+        change = MagicMock()
+        idtrack.diff_account_added([], {}, None, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_account_added_threshold_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.THRESHOLD_RUN
+        change = MagicMock()
+        idtrack.diff_account_added([], {}, None, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_account_deleted_dry_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.DRY_RUN
+        change = MagicMock()
+        idtrack.diff_account_deleted([], {}, None, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_account_deleted_threshold_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.THRESHOLD_RUN
+        change = MagicMock()
+        idtrack.diff_account_deleted([], {}, None, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_group_member_added_dry_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.DRY_RUN
+        change = MagicMock()
+        idtrack.diff_group_member_added([], {}, None, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_group_member_added_threshold_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.THRESHOLD_RUN
+        change = MagicMock()
+        idtrack.diff_group_member_added([], {}, None, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_group_member_deleted_dry_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.DRY_RUN
+        change = MagicMock()
+        idtrack.diff_group_member_deleted([], {}, None, change)
+        analyse.assert_not_called()
+
+    @patch.object(RoleDeviationRiskAnalysis, "analyse")
+    def test_diff_group_member_deleted_threshold_run(self, analyse):
+        idtrack_plugin = MagicMock()
+        idtrack = IDTrack(idtrack_plugin, {})
+        idtrack.run_type = IDTrackBase.THRESHOLD_RUN
+        change = MagicMock()
+        idtrack.diff_group_member_deleted([], {}, None, change)
         analyse.assert_not_called()
