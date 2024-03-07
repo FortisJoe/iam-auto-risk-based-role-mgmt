@@ -1,7 +1,7 @@
 from idmlib.components import component_log
 from idmlib.components.extension import ExtScript
 from idmlib.diffset import IDTrackBase
-from idmlib.idmobject import Profile
+from idmlib.idmobject import Profile, ResourceTemplate
 
 from Functional.role_deviation_common_library.helper import (
     get_account_risk_information,
@@ -96,9 +96,10 @@ class IDTrack(ExtScript):
                     risk_info = get_account_risk_information(
                         template_id
                     )
+                    template = ResourceTemplate(template_id, account.hostid)
                     risk_input = RiskAnalysisInput(
                         profile,
-                        account,
+                        template,
                         DeviationType.DEFICIT,
                         risk_info
                     )

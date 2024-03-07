@@ -337,7 +337,8 @@ class TestExitTrap(CommonTest):
         analyse.assert_called_once()
         result_risk_analysis = analyse.call_args_list[0][0][0]
         assert profile == result_risk_analysis.profile
-        assert account == result_risk_analysis.resource
+        assert account.hostid == result_risk_analysis.resource.hostid
+        assert "AD_TEMPLATE" == result_risk_analysis.resource.tplid
         assert DeviationType.DEFICIT == result_risk_analysis.type_of_deviation
         assert 1 == result_risk_analysis.risk_information.confidentiality_impact
         assert 2 == result_risk_analysis.risk_information.integrity_impact
