@@ -24,7 +24,7 @@
 
             <p>They have a ${deviation_type} of a ${deviation}.</p>
 
-            <p>As the risk level for a ${deviation_type} deviation for this access is deemed to be ${treatment.classification}, this access will have a request raised for it to be {action}.</p>
+            <p>As the risk level for a ${deviation_type} deviation for this access is deemed to be ${treatment.classification}, this access will have a request raised for it to be ${action}.</p>
 
             <p>Many thanks,</p>
 
