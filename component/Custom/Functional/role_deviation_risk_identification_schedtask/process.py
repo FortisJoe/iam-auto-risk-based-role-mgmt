@@ -1,6 +1,6 @@
 from idmlib import core
 from idmlib.idmobject import Profile, ResourceGroup, ResourceTemplate
-from idmlib.components import component_log
+from idmlib.components import component_log, extension
 
 
 from Functional.role_deviation_common_library.helper import (
@@ -78,7 +78,7 @@ class RiskIdentification:
 
                 self.log.info(
                     f"There are {deviations} total deviations for "
-                    f"{profile.alias}.\r\n"
+                    f"{profile.userid}.\r\n"
                     f"Surplus Accounts: {len(surplus_accounts)} "
                     f"Groups: {len(surplus_groups)}\r\n"
                     f"Deficit Accounts: {len(deficit_accounts)} "
