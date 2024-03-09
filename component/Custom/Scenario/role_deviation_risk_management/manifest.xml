@@ -19,7 +19,7 @@
     <depends>Functional.role_deviation_risk_identification_schedtask</depends>
     <depends>Functional.hid_loaddb</depends>
     <depends>Functional.im_idtrack</depends>
-    <depends>Functional.im_policy_authorisation</depends>
+    <depends>Functional.im_policy_authorization</depends>
 
     <configdata component="Functional.role_deviation_risk_classification.model.RiskClassficiationEvalTreatmentLookup">
   	    <filename>data\classification.csv</filename>
