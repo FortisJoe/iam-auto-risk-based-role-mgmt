@@ -1,4 +1,17 @@
 {
+  "Dependents": [
+    {
+      "Fields": {
+        "id": "ROLE_DEVIATION_CHECK",
+        "lasterr": 0,
+        "lastfin": null,
+        "lasttime": null,
+        "manual": false,
+        "status": "NOTRUN"
+      },
+      "Type": "ScheduledTaskRun"
+    }
+  ],
   "Fields": {
     "certid": null,
     "daysofmonth": 0,
@@ -11,7 +24,7 @@
     "frequency": 0,
     "id": "ROLE_DEVIATION_CHECK",
     "iterations": 0,
-    "job": "\"C:\\Program Files\\Python311\\python.exe\" -m \"Functional\\role_deviation_risk_identification_schedtask\\process.py\"",
+    "job": "\"C:\\Program Files\\Python311\\python.exe\" \"_INSTALLDIR\\component\\Custom\\Functional\\role_deviation_risk_identification_schedtask\\process.py\"",
     "jobownername": "superuser",
     "lastdayofmonth": false,
     "mode": "QUARTERLY",
