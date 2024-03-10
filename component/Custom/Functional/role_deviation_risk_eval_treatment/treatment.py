@@ -209,12 +209,10 @@ class RiskTreatment:
         :param request: The request to submit
         :type request: idmlib.idmobject.Request
         """
-        # Distributes requests amongst app nodes
-        serverid = 'RANDOM'
         # Attempt request submission.
         try:
             request.log = log
-            request.api_submit(serverid=serverid)
+            request.api_submit()
         except Exception as e:
             log.exception(e)
             log.error('Failed to submit request.')
