@@ -27,7 +27,7 @@ Each managed group and template should have the surplus (user has entitlement wi
 
 The risk levels should be configured to match your risk acceptance levels, in the extdb table role_deviation_risk_classification_evaluation_treatment
 
-![Table]([https://i.ibb.co/LZS2pdd/Capture-Table.png](https://github.com/user-attachments/assets/ee9b7b8a-6a7e-4560-88d4-abddfda7e690))
+![Table](https://github.com/user-attachments/assets/ee9b7b8a-6a7e-4560-88d4-abddfda7e690)
 
 ## Usage
 
