@@ -23,11 +23,11 @@ Open the Bravura Security Fabric Command Prompt as an Administrator, changing di
 
 Each managed group and template should have the surplus (user has entitlement without a role definition to match it) and deficit (user should have entitlment according to the role definitions, but does not have it) risk scores defined, as well as how often a risk should be exploited or how much it would cause issues with availability, in terms of a rate of occurance - this is times per year.
 
-![Configuration](https://i.ibb.co/MsP0fhc/screenshot.png)
+![Configuration](https://github.com/user-attachments/assets/f13ff30d-189e-4924-97f1-a124dd3a3dca)
 
 The risk levels should be configured to match your risk acceptance levels, in the extdb table role_deviation_risk_classification_evaluation_treatment
 
-![Table](https://i.ibb.co/LZS2pdd/Capture-Table.png)
+![Table]([https://i.ibb.co/LZS2pdd/Capture-Table.png](https://github.com/user-attachments/assets/ee9b7b8a-6a7e-4560-88d4-abddfda7e690))
 
 ## Usage
 
